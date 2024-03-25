@@ -8,7 +8,6 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    json_data = models.JSONField(blank=True, null=True)  # Champ pour stocker les données JSON
 
     def publish(self):
         self.published_date = timezone.now()
