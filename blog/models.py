@@ -8,6 +8,7 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    json_data = models.JSONField(blank=True, null=True)  # Champ pour stocker les données JSON
 
     def publish(self):
         self.published_date = timezone.now()
@@ -16,3 +17,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+class Match(models.Model):
+    date = models.DateField()
+    nom_tournois = models.CharField(max_length=100)
+    score_equipe = models.IntegerField()
+    score_equipe_adverse = models.IntegerField()
+    adversaire = models.CharField(max_length=100)
